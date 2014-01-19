@@ -1,0 +1,59 @@
+﻿@model MvcApplication8.Controllers.PersonsViewModel
+
+<h2>Persons</h2>
+<div class="row" style="padding-bottom: 10px;">
+    <div class="col-md-5 col-md-offset-5">
+        <button class="btn btn-info">Add Person</button>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+        </tr>
+        @foreach (var person in Model.Persons)
+        {
+            <tr>
+                <td>@person.FirstName</td>
+                <td>@person.LastName</td>
+                <td>@person.Age</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="modal fade" id="addPersonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Add Person</h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="/person/Add">
+                    <div class="form-control">
+                        <label clas>First Name</label>
+                        <input type="text" name="firstName" />
+                    </div>
+                    <div class="form-control">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" />
+                    </div>
+                    <div class="form-control">
+                        <label>Age</label>
+                        <input type="text" name="age" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="addPerson" data-dismiss="modal" class="btn btn-info">Add</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
